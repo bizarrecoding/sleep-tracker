@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="night"
+            type="com.bizarrecoding.sleeptracker.models.Night" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{night.getStartingDate()}"
+                tools:text="Jan 20, 2020"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+                android:id="@+id/sleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:tint="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date"
+                app:srcCompat="@drawable/sleep" />
+
+        <TextView
+                android:id="@+id/fromLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{night.formattedStartTime()}"
+                tools:text="1:30 AM"
+                app:layout_constraintBottom_toBottomOf="@+id/sleep"
+                app:layout_constraintStart_toEndOf="@+id/sleep"
+                app:layout_constraintTop_toTopOf="@+id/sleep" />
+
+        <View
+                android:id="@+id/divider"
+                style="@style/Divider"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/fromLabel"
+                app:layout_constraintEnd_toStartOf="@+id/toLabel"
+                app:layout_constraintStart_toEndOf="@+id/fromLabel"
+                app:layout_constraintTop_toTopOf="@id/fromLabel" />
+
+        <TextView
+                android:id="@+id/toLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@{night.formattedEndTime()}"
+                app:layout_constraintBottom_toBottomOf="@+id/fromLabel"
+                app:layout_constraintEnd_toStartOf="@+id/wake"
+                app:layout_constraintTop_toTopOf="@+id/fromLabel"
+                tools:text="9:30 AM" />
+
+        <ImageView
+                android:id="@+id/wake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:tint="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="@+id/toLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/toLabel"
+                app:srcCompat="@drawable/weather_sunset" />
+
+        <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@{String.format(@string/duration, night.calcDuration())}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/sleep"
+                app:layout_constraintTop_toBottomOf="@+id/sleep" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.bizarrecoding.sleeptracker.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+                android:id="@+id/toStatsFragment"
+                app:destination="@id/statsFragment" />
+        <action
+                android:id="@+id/to_alarms_list"
+                app:destination="@id/alarmListFragment"
+                app:popUpTo="@+id/mainFragment" />
+        <action
+                android:id="@+id/to_Alarm_Edit"
+                app:destination="@id/alarmFragment"
+                app:popUpTo="@+id/mainFragment" />
+        <action
+                android:id="@+id/action_mainFragment_to_preferenceFragment"
+                app:destination="@id/preferenceFragment" />
+        <action
+                android:id="@+id/start_night"
+                app:destination="@id/nightFragment"
+                app:popUpTo="@+id/mainFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/statsFragment"
+            android:name="com.bizarrecoding.sleeptracker.ui.stats.StatsFragment"
+            android:label="fragment_stats"
+            tools:layout="@layout/fragment_stats" />
+    <fragment
+            android:id="@+id/alarmListFragment"
+            android:name="com.bizarrecoding.sleeptracker.ui.alarmList.AlarmListFragment"
+            android:label="fragment_alarm_list"
+            tools:layout="@layout/fragment_alarm_list" >
+        <action
+                android:id="@+id/to_Alarm_Edit"
+                app:destination="@id/alarmFragment"
+                app:popUpTo="@id/mainFragment"
+                app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+            android:id="@+id/alarmFragment"
+            android:name="com.bizarrecoding.sleeptracker.ui.alarm.AlarmFragment"
+            android:label="fragment_alarm"
+            tools:layout="@layout/fragment_alarm">
+            <argument
+                    android:name="alarm_id"
+                    app:argType="integer"
+                    android:defaultValue="0" />
+    </fragment>
+    <fragment
+            android:id="@+id/preferenceFragment"
+            android:name="com.bizarrecoding.sleeptracker.PreferenceFragment"
+            android:label="fragment_preference"
+            tools:layout="@layout/fragment_preference" />
+    <fragment
+            android:id="@+id/nightFragment"
+            android:name="com.bizarrecoding.sleeptracker.ui.night.NightFragment"
+            android:label="fragment_night"
+            tools:layout="@layout/fragment_night" />
+</navigation>

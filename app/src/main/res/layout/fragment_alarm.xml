@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="java.util.ArrayList"/>
+        <variable name="model"
+            type="com.bizarrecoding.sleeptracker.ui.alarm.AlarmViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <ScrollView
+                android:id="@+id/scrollView3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/delete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="400dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
+
+                <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="36dp"
+                        android:text="@string/alarm_settings"
+                        android:textSize="36sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <Switch
+                        android:id="@+id/enabled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:checked="@{model.alarm.enabled}"
+                        app:layout_constraintBottom_toBottomOf="@+id/title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/title"
+                        tools:checked="true" />
+
+                <ImageView
+                        android:id="@+id/imageView2"
+                        style="@style/AppTheme.label"
+                        android:labelFor="@id/name"
+                        android:layout_marginTop="64dp"
+                        app:layout_constraintStart_toStartOf="@+id/title"
+                        app:layout_constraintTop_toBottomOf="@+id/title"
+                        app:srcCompat="@drawable/label" />
+
+                <EditText
+                        android:autofillHints="no"
+                        android:id="@+id/name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="@={model.name}"
+                        android:textColor="?android:attr/textColor"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                        app:layout_constraintEnd_toEndOf="@+id/enabled"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2"
+                        app:layout_constraintTop_toTopOf="@+id/imageView2"
+                        tools:text="Name" />
+
+                <ImageView
+                        android:id="@+id/imageView3"
+                        style="@style/AppTheme.label"
+                        android:layout_marginTop="64dp"
+                        app:layout_constraintStart_toStartOf="@+id/imageView2"
+                        app:layout_constraintTop_toBottomOf="@+id/name"
+                        app:srcCompat="@drawable/alarm" />
+
+                <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{model.alarm.getFormattedTime() ?? "None"}'
+                        android:textSize="50sp"
+                        android:transitionName="@{@string/TimeTransition(model.alarm.id_alarm)}"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                        app:layout_constraintStart_toStartOf="@+id/name"
+                        app:layout_constraintTop_toTopOf="@+id/imageView3"
+                        tools:text="9:33 PM" />
+                <ImageView
+                        android:id="@+id/imageView4"
+                        style="@style/AppTheme.label"
+                        android:layout_marginTop="64dp"
+                        app:layout_constraintStart_toStartOf="@+id/imageView3"
+                        app:layout_constraintTop_toBottomOf="@+id/time"
+                        app:srcCompat="@drawable/calendar_month" />
+
+                <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                        app:layout_constraintEnd_toEndOf="@+id/name"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/time"
+                        app:layout_constraintTop_toTopOf="@+id/imageView4">
+
+                    <ToggleButton
+                            android:id="@+id/day1"
+                            style="@style/AppTheme.daySwitch"
+                            android:checked="@{model.days[1]}"
+                            android:textOff="@string/lunes"
+                            android:textOn="@string/lunes"
+                            tools:checked="true" />
+
+                    <ToggleButton
+                            android:id="@+id/day2"
+                            style="@style/AppTheme.daySwitch"
+                            android:checked="@{model.days[2]}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                            android:textOff="@string/martes"
+                            android:textOn="@string/martes" />
+
+                    <ToggleButton
+                            android:id="@+id/day3"
+                            style="@style/AppTheme.daySwitch"
+                            android:checked="@{model.days[3]}"
+                            android:textOff="@string/miercoles"
+                            android:textOn="@string/miercoles" />
+
+                    <ToggleButton
+                            android:id="@+id/day4"
+                            style="@style/AppTheme.daySwitch"
+                            android:checked="@{model.days[4]}"
+                            android:textOff="@string/jueves"
+                            android:textOn="@string/jueves" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                    <ToggleButton
+                            android:id="@+id/day5"
+                            style="@style/AppTheme.daySwitch"
+                            android:checked="@{model.days[5]}"
+                            android:textOff="@string/viernes"
+                            android:textOn="@string/viernes" />
+
+                    <ToggleButton
+                            android:id="@+id/day6"
+                            style="@style/AppTheme.daySwitch"
+                            android:checked="@{model.days[6]}"
+                            android:textOff="@string/sabado"
+                            android:textOn="@string/sabado" />
+
+                    <ToggleButton
+                            android:id="@+id/day0"
+                            style="@style/AppTheme.daySwitch"
+                            android:checked="@{model.days[0]}"
+                            android:textOff="@string/domingo"
+                            android:textOn="@string/domingo" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <Button
+                android:id="@+id/save"
+                style="@style/AppTheme.BtnColorless"
+                android:layout_marginEnd="32dp"
+                android:text="@string/save"
+                app:layout_constraintBottom_toBottomOf="@+id/delete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/delete" />
+
+        <Button
+                android:id="@+id/delete"
+                style="@style/AppTheme.BtnColorless"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="16dp"
+                android:text="@{ model.alarm.id_alarm != 0 ? @string/delete : @android:string/cancel }"
+                android:textColor="#FF1744"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

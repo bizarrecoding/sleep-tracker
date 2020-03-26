@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="model"
+                type="com.bizarrecoding.sleeptracker.ui.night.NightViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black">
+
+        <TextClock
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.333"
+                tools:text="10:30 AM" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/cancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/close_thick"
+                app:backgroundTint="@color/colorAccent2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.6667"
+                app:tint="@android:color/white"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/finishBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:src="@drawable/check_bold"
+                app:layout_constraintBottom_toBottomOf="@id/cancelBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cancelBtn"
+                app:tint="@android:color/white"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sleep Tracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="alarms">Alarms</string>
+    <string name="alarm_settings">Alarm settings</string>
+
+    <!-- Formats -->
+    <string name="time">%1$s:%2$s %3$s</string>
+    <string name="remaining">(%s)</string>
+    <string name="duration">Duration: %2f</string>
+    <string name="notification_snack">Alarm set for %s</string>
+    <string name="TimeTransition">text_time %d</string>
+    <string name="formatDouble">%.2f</string>
+
+    <!-- notifications -->
+    <string name="notification_title">Alarm</string>
+    <string name="notification_msg">Touch to stop</string>
+
+    <!-- Buttons -->
+    <string name="save">save</string>
+    <string name="snooze">Snooze</string>
+    <string name="delete">Delete</string>
+    <string name="stop">Stop</string>
+
+    <!-- Days -->
+    <string name="lunes">Mon.</string>
+    <string name="martes">Tue.</string>
+    <string name="miercoles">Wed.</string>
+    <string name="jueves">Thu.</string>
+    <string name="viernes">Fri.</string>
+    <string name="sabado">Sat.</string>
+    <string name="domingo">Sun.</string>
+
+    <!-- labels -->
+    <string name="label_duration">Duration</string>
+    <string name="sleep_duration">Sleep duration</string>
+    <string name="night_logs">Night logs</string>
+    <string name="sleep_score">Sleep score</string>
+    <string name="deficit">Deficit</string>
+    <string name="start_sleep">Start Sleep</string>
+    <string name="test">Test</string>
+</resources>
